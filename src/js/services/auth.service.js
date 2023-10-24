@@ -18,7 +18,7 @@ import { loginServer } from './auth.server'; // импорт сервера за
 //         const response = await axios.post(`/auth/login`, JSON.stringify({email, password}));
 
 //         console.log(response);
-//         return response.data;
+//         return response;
 //     } catch(err) {
 //         console.log(err);
 //         return Promise.reject(err);

@@ -11,6 +11,7 @@ import { validate } from './helpers/validate';
 import { showInputError, removeInputError } from './views/form';
 import { login } from './services/auth.service';
 import { notify } from './views/notification';
+import { getNews } from './services/news.service';
 
 const {form, inputEmail, inputPassword} = UI;
 
@@ -41,6 +42,7 @@ async function onSubmit(inputs) {
 
     try{
         const result = await login(inputEmail.value, inputPassword.value)
+        // await getNews(); // не работает так как не могу получит токен от сервера, он не отвечает
         console.log(result);
         notify({ msg: 'autorisation success', className: 'alert-success', timeout: 3000 });
     }catch(err) {
