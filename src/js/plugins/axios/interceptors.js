@@ -14,7 +14,7 @@ function getClearResponse(res) {
 };
 
 function setToken(req) {
-    const isAuthUrl = req.url.include('auth');
+    const isAuthUrl = req.url.includes('auth');
     if(!isAuthUrl) {
         const token = localStorage.getItem(lsTokenKey);
         req.headers['x-acces-token'] = token;
@@ -32,5 +32,5 @@ function onError(err) {
 export default function(axios) {
     axios.interceptors.request.use(setToken);
     axios.interceptors.response.use(setTokenOnLogin);
-    axios.interceptors.response.use(getClearResponse, onError);
+    axios.interceptors.response.use(getClearResponse);
 };
