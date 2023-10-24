@@ -45,7 +45,7 @@ async function onSubmit(inputs) {
         notify({ msg: 'autorisation success', className: 'alert-success', timeout: 3000 });
     }catch(err) {
         console.log(err)
-        notify({ msg: 'autorisation folse', className: 'alert-danger' })
+        notify({ msg: 'autorisation folse', className: 'alert-danger', timeout: 3000 })
     }
     
 
