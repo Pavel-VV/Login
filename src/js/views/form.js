@@ -12,6 +12,8 @@ function templateMsgError(msg) {
  */
 export function showInputError(el) {
     const parent = el.parentElement;
+    const err = parent.querySelector('.invalid-feedback');
+    if (err) return;
     const msg = el.dataset.invalidMessage || 'Invalid input';
     const msgErr = templateMsgError(msg);
     el.classList.add('is-invalid');
