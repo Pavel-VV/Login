@@ -13,23 +13,28 @@ import { login } from './services/auth.service';
 import { notify } from './views/notification';
 import { getNews } from './services/news.service';
 
-const {form, inputEmail, inputPassword} = UI;
+const {forms, inputEmail, inputPassword, inputEmailAuth, inputPasswordAuth} = UI;
 
-const inputs = [inputEmail, inputPassword];
-
+const inputs = [inputEmail, inputPassword, inputEmailAuth, inputPasswordAuth];
+const allForms = [...forms];
 //events
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    console.log('hi')
-    onSubmit(inputs);
-});
+allForms.forEach(form => {
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        onSubmit(inputs, form);
+    });
+})
+
 
 inputs.forEach(el => el.addEventListener('focus', () => removeInputError(el)));
 
 
 //handlers
-async function onSubmit(inputs) {
+let inputsPost = []; // массив данных из импутов. можно попробовать сделать создание объекта, с ключом и значением value
+async function onSubmit(inputs, form) {
     const isValidForm = inputs.every(el => {
+        if(!(el.closest('form') === form)) return true; //перебираем все инпуты всех форм, если перебираемый элемент не равен передаваемой форме то, вернуть true, и цикл every продолжет перебирать элементы, есди будет равен, то код продолжится выполняться дальше, и этот инпут будет проверяться на правильность введенных данных
+        inputsPost.push(el.value);
         const isValidInput = validate(el);
         if (!isValidInput) {
             showInputError(el);
@@ -39,9 +44,10 @@ async function onSubmit(inputs) {
     });
 
     if(!isValidForm) return;
-
+    // написать условие проверки, если в массиве inputPost есть информаци только о двух инпутах, то делать запрос на login
     try{
-        const result = await login(inputEmail.value, inputPassword.value)
+        const result = await login(inputsPost);
+        // const result = await login(inputEmail.value, inputPassword.value)
         // await getNews(); // не работает так как не могу получит токен от сервера, он не отвечает
         console.log(result);
         notify({ msg: 'autorisation success', className: 'alert-success', timeout: 3000 });
