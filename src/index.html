@@ -7,163 +7,197 @@
     <title>Document</title>
   </head>
   <body>
+
+    
+
     <div class="login-page-wrapp d-flex">
+
+      
+      <!-- надо разместить флекс элементы друг под другом -->
 
       <!-- form login -->
       <div class="login-form-wrap d-flex align-items-center">
-        <div class="form-card card ml-auto">
-          <div class="card-body">
-            <h4 class="card-title">Please Login</h4>
-            <form name="loginForm">
-              <div class="form-group">
-                <label for="email">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                  data-required="email"
-                  data-invalid-message="Please provide valid email example@example.com"
-                />
+        <div class="ml-auto">
+          <nav>
+            <div class="nav nav-tabs" id="nav-tabs">
+              <button class="nav-link active" id="nav-login-tab" data-toggle="tab" data-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
+              <button class="nav-link" id="nav-auth-tab" data-toggle="tab" data-target="#nav-auth" type="button" role="tab" aria-controls="nav-auth" aria-selected="false">Auth</button>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
+              <div class="form-card card" style="width:500px; height:463px">
+                <div class="card-body">
+                  <h4 class="card-title">Please Login</h4>
+                  <form name="loginForm">
+                    <div class="form-group col-md-12">
+                      <label for="email">Email address</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter email"
+                        data-required="email"
+                        data-invalid-message="Please provide valid email example@example.com"
+                      />
+                    </div>
+                    <div class="form-group col-md-12">
+                      <label for="password">Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Password"
+                        data-required="password"
+                      />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  placeholder="Password"
-                  data-required="password"
-                />
+            </div>
+            
+
+            <div class="tab-pane fade" id="nav-auth" role="tabpanel" aria-labelledby="nav-auth-tab">
+              <div class="form-card card">
+                <div class="card-body">
+                  <h4 class="card-title">Please Login</h4>
+                  <form name="loginForm">
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                        <label for="email2">Email address</label>
+                        <input
+                          type="email2"
+                          class="form-control2"
+                          id="email2"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter email"
+                          data-required="email2"
+                          data-invalid-message="Please provide valid email example@example.com"
+                        />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="password2">Password</label>
+                        <input
+                          type="password2"
+                          class="form-control2"
+                          id="password2"
+                          placeholder="Password"
+                          data-required="password2"
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                        <label for="nickname">Nickname</label>
+                        <input
+                          type="nickname"
+                          class="form-control"
+                          id="nickname"
+                          placeholder="Nickname"
+                          data-required="nickname"
+                        />
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="first-name">First name</label>
+                        <input
+                          type="first-name"
+                          class="form-control"
+                          id="first-name"
+                          placeholder="First name"
+                          data-required="first-name"
+                        />
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="last-name">Last name</label>
+                        <input
+                          type="last-name"
+                          class="form-control"
+                          id="last-name"
+                          placeholder="Last name"
+                          data-required="last-name"
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-3">
+                        <label for="gender">Gender</label>
+                        <input
+                          type="gender"
+                          class="form-control"
+                          id="gender"
+                          placeholder="Gender"
+                          data-required="gender"
+                        />
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="date-of-birth">Date of birth</label>
+                        <input
+                          type="date-of-birth"
+                          class="form-control"
+                          id="date-of-birth"
+                          placeholder="Date of birth"
+                          data-required="date-of-birth"
+                        />
+                      </div>
+                      <div class="form-group col-md-5">
+                        <label for="phone">Phone</label>
+                        <input
+                          type="phone"
+                          class="form-control"
+                          id="phone"
+                          placeholder="Phone"
+                          data-required="phone"
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                        <label for="city">City</label>
+                        <input
+                          type="city"
+                          class="form-control"
+                          id="city"
+                          placeholder="City"
+                          data-required="city"
+                        />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="country">Country</label>
+                        <input
+                          type="country"
+                          class="form-control"
+                          id="country"
+                          placeholder="Country"
+                          data-required="country"
+                        />
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </div>
+            
           </div>
         </div>
+        
+
+        
+          
+
+          <!-- form registration -->
+          
+          
+        
+
       </div>
       <!-- /.login-form-wrap -->
 
-      <!-- form registration -->
+      
       <!-- <div class="login-form-wrap d-flex align-items-center">
-        <div class="form-card card ml-auto">
-          <div class="card-body">
-            <h4 class="card-title">Please Login</h4>
-            <form name="loginForm">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="email">Email address</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter email"
-                    data-required="email"
-                    data-invalid-message="Please provide valid email example@example.com"
-                  />
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="password">Password</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    placeholder="Password"
-                    data-required="password"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group col-md-4">
-                  <label for="nickname">Nickname</label>
-                  <input
-                    type="nickname"
-                    class="form-control"
-                    id="nickname"
-                    placeholder="Nickname"
-                    data-required="nickname"
-                  />
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="first-name">First name</label>
-                  <input
-                    type="first-name"
-                    class="form-control"
-                    id="first-name"
-                    placeholder="First name"
-                    data-required="first-name"
-                  />
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="last-name">Last name</label>
-                  <input
-                    type="last-name"
-                    class="form-control"
-                    id="last-name"
-                    placeholder="Last name"
-                    data-required="last-name"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group col-md-3">
-                  <label for="gender">Gender</label>
-                  <input
-                    type="gender"
-                    class="form-control"
-                    id="gender"
-                    placeholder="Gender"
-                    data-required="gender"
-                  />
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="date-of-birth">Date of birth</label>
-                  <input
-                    type="date-of-birth"
-                    class="form-control"
-                    id="date-of-birth"
-                    placeholder="Date of birth"
-                    data-required="date-of-birth"
-                  />
-                </div>
-                <div class="form-group col-md-5">
-                  <label for="phone">Phone</label>
-                  <input
-                    type="phone"
-                    class="form-control"
-                    id="phone"
-                    placeholder="Phone"
-                    data-required="phone"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="city">City</label>
-                  <input
-                    type="city"
-                    class="form-control"
-                    id="city"
-                    placeholder="City"
-                    data-required="city"
-                  />
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="country">Country</label>
-                  <input
-                    type="country"
-                    class="form-control"
-                    id="country"
-                    placeholder="Country"
-                    data-required="country"
-                  />
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-        </div>
+        
       </div> -->
 
 
@@ -181,5 +215,8 @@
       <!-- /.login-greeting-screen -->
     </div>
     <!-- /.login-page-wrapp -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   </body>
 </html>

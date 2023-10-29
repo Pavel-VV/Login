@@ -20,7 +20,7 @@ const inputs = [inputEmail, inputPassword];
 //events
 form.addEventListener('submit', e => {
     e.preventDefault();
-
+    console.log('hi')
     onSubmit(inputs);
 });
 
