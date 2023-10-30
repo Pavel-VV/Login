@@ -19,14 +19,14 @@
       <div class="login-form-wrap d-flex align-items-center">
         <div class="ml-auto">
           <nav>
-            <div class="nav nav-tabs" id="nav-tabs">
-              <button class="nav-link active" id="nav-login-tab" data-toggle="tab" data-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
-              <button class="nav-link" id="nav-auth-tab" data-toggle="tab" data-target="#nav-auth" type="button" role="tab" aria-controls="nav-auth" aria-selected="false">Auth</button>
+            <div class="nav nav-pills" id="nav-tabs">
+              <button class="nav-link active" id="nav-login-tab" data-toggle="pill" data-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
+              <button class="nav-link" id="nav-auth-tab" data-toggle="pill" data-target="#nav-auth" type="button" role="tab" aria-controls="nav-auth" aria-selected="false">Auth</button>
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
-              <div class="form-card card" style="width:500px; height:463px">
+              <div class="form-card card">
                 <div class="card-body">
                   <h4 class="card-title">Please Login</h4>
                   <form name="loginForm">
@@ -62,9 +62,9 @@
             <div class="tab-pane fade" id="nav-auth" role="tabpanel" aria-labelledby="nav-auth-tab">
               <div class="form-card card">
                 <div class="card-body">
-                  <h4 class="card-title">Please Login</h4>
+                  <h4 class="card-title">Please Registration</h4>
                   <form name="authForm">
-                    <div class="row">
+                    <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="email2">Email address</label>
                         <input
@@ -78,9 +78,9 @@
                         />
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="password2">Password</label>
+                        <label for="passwordAuth">Password</label>
                         <input
-                          type="password2"
+                          type="password"
                           class="form-control"
                           id="passwordAuth"
                           placeholder="Password"
@@ -88,7 +88,27 @@
                         />
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="first-name">First name</label>
+                        <input
+                          type="first-name"
+                          class="form-control"
+                          id="first-name"
+                          placeholder="First name"
+                          data-required="first_name"
+                        />
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="last-name">Last name</label>
+                        <input
+                          type="last-name"
+                          class="form-control"
+                          id="last-name"
+                          placeholder="Last name"
+                          data-required="last_name"
+                        />
+                      </div>
                       <div class="form-group col-md-4">
                         <label for="nickname">Nickname</label>
                         <input
@@ -99,37 +119,14 @@
                           data-required="nickname"
                         />
                       </div>
-                      <div class="form-group col-md-4">
-                        <label for="first-name">First name</label>
-                        <input
-                          type="first-name"
-                          class="form-control"
-                          id="first-name"
-                          placeholder="First name"
-                          data-required="first-name"
-                        />
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="last-name">Last name</label>
-                        <input
-                          type="last-name"
-                          class="form-control"
-                          id="last-name"
-                          placeholder="Last name"
-                          data-required="last-name"
-                        />
-                      </div>
                     </div>
-                    <div class="row">
-                      <div class="form-group col-md-3">
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
                         <label for="gender">Gender</label>
-                        <input
-                          type="gender"
-                          class="form-control"
-                          id="gender"
-                          placeholder="Gender"
-                          data-required="gender"
-                        />
+                        <select type="gender" id="gender" class="form-control" data-required="gender">
+                          <option selected>male</option>
+                          <option>female</option>
+                        </select>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="date-of-birth">Date of birth</label>
@@ -138,10 +135,10 @@
                           class="form-control"
                           id="date-of-birth"
                           placeholder="Date of birth"
-                          data-required="date-of-birth"
+                          data-required="date_of_birth"
                         />
                       </div>
-                      <div class="form-group col-md-5">
+                      <div class="form-group col-md-4">
                         <label for="phone">Phone</label>
                         <input
                           type="phone"
@@ -152,17 +149,7 @@
                         />
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="form-group col-md-6">
-                        <label for="city">City</label>
-                        <input
-                          type="city"
-                          class="form-control"
-                          id="city"
-                          placeholder="City"
-                          data-required="city"
-                        />
-                      </div>
+                    <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="country">Country</label>
                         <input
@@ -171,6 +158,16 @@
                           id="country"
                           placeholder="Country"
                           data-required="country"
+                        />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="city">City</label>
+                        <input
+                          type="city"
+                          class="form-control"
+                          id="city"
+                          placeholder="City"
+                          data-required="city"
                         />
                       </div>
                     </div>

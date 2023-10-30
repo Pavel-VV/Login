@@ -13,9 +13,22 @@ import { login } from './services/auth.service';
 import { notify } from './views/notification';
 import { getNews } from './services/news.service';
 
-const {forms, inputEmail, inputPassword, inputEmailAuth, inputPasswordAuth} = UI;
+const {forms,
+    inputEmail,
+    inputPassword,
+    inputEmailAuth,
+    inputPasswordAuth,
+    inputFirstName,
+    inputLastName,
+    inputNickname,
+    inputGender,
+    inputDateOfBirth,
+    inputPhone,
+    inputCountry,
+    inputCity
+} = UI;
 
-const inputs = [inputEmail, inputPassword, inputEmailAuth, inputPasswordAuth];
+const inputs = [inputEmail, inputPassword, inputEmailAuth, inputPasswordAuth, inputFirstName, inputLastName, inputNickname, inputGender, inputDateOfBirth, inputPhone, inputCountry, inputCity];
 const allForms = [...forms];
 //events
 allForms.forEach(form => {
@@ -30,33 +43,42 @@ inputs.forEach(el => el.addEventListener('focus', () => removeInputError(el)));
 
 
 //handlers
-let inputsPost = []; // массив данных из импутов. можно попробовать сделать создание объекта, с ключом и значением value
+let inputsValueFromForm = {}; // объект данных из импутов
 async function onSubmit(inputs, form) {
+    let submitForm; // форма с которой с которой произвели submit
     const isValidForm = inputs.every(el => {
         if(!(el.closest('form') === form)) return true; //перебираем все инпуты всех форм, если перебираемый элемент не равен передаваемой форме то, вернуть true, и цикл every продолжет перебирать элементы, есди будет равен, то код продолжится выполняться дальше, и этот инпут будет проверяться на правильность введенных данных
-        inputsPost.push(el.value);
+        submitForm = el.closest('form');
+        inputsValueFromForm[el.dataset.required] = el.value;
+        // console.log(submitForm);
         const isValidInput = validate(el);
         if (!isValidInput) {
             showInputError(el);
 
         };
         return isValidInput;
+        
     });
+    // console.log(inputsValueFromForm);
 
     if(!isValidForm) return;
-    // написать условие проверки, если в массиве inputPost есть информаци только о двух инпутах, то делать запрос на login
-    try{
-        const result = await login(inputsPost);
-        // const result = await login(inputEmail.value, inputPassword.value)
-        // await getNews(); // не работает так как не могу получит токен от сервера, он не отвечает
-        console.log(result);
-        notify({ msg: 'autorisation success', className: 'alert-success', timeout: 3000 });
-    }catch(err) {
-        console.log(err)
-        notify({ msg: 'autorisation folse', className: 'alert-danger', timeout: 3000 })
+    
+    if(submitForm.name === 'loginForm'){ // если имя формы с которой отправляют данные равно 'loginForm' то выполнять запрос на login, если не т то на auth
+        try{
+            const result = await login(inputsValueFromForm);
+            // const result = await login(inputEmail.value, inputPassword.value)
+            // await getNews(); // не работает так как не могу получит токен от сервера, он не отвечает
+            console.log(result);
+            notify({ msg: 'autorisation success', className: 'alert-success', timeout: 3000 });
+        }catch(err) {
+            console.log(err)
+            notify({ msg: 'autorisation folse', className: 'alert-danger', timeout: 3000 })
+        };
+    } else {
+        console.log('form auth')
     }
     
 
     // console.log(isValidForm);
 
-}
+}   // написать эмулирование сервера регистрации

@@ -38,3 +38,8 @@
 .login-greeting-screen .login-greeting-screen-description {
   line-height: 1.4;
 }
+
+#nav-login .form-card {
+  width: 500px;
+  height: 463px;
+}
