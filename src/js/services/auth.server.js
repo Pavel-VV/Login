@@ -4,6 +4,8 @@ const validData = {
     password: 'dmgame12345'
 }
 
+const addNewUser = [];
+
 /**
  * function loginServer. Функция проверки введенныйх данных через форму с данными на сервере
  * @param {Object} object 
@@ -19,4 +21,17 @@ export function loginServer({email, password}) {
         }else reject(false);
     });
     return promise;
-}
+};
+
+export function authServer(userData) {
+    const promise = new Promise((resolve, reject) => {
+        if(userData) {
+            addNewUser.push(userData);
+            return {
+                error: false,
+                auth: true,
+                token: Math.random(),
+            };
+        } else reject(false);
+    });
+};
