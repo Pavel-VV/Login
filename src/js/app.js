@@ -45,24 +45,24 @@ inputs.forEach(el => el.addEventListener('focus', () => removeInputError(el)));
 //handlers
 let inputsValueFromForm = {}; // объект данных из импутов
 async function onSubmit(inputs, form) {
-    let submitForm; // форма с которой с которой произвели submit
+    let submitForm; // форма с которой произвели submit
     const isValidForm = inputs.every(el => {
         if(!(el.closest('form') === form)) return true; //перебираем все инпуты всех форм, если перебираемый элемент не равен передаваемой форме то, вернуть true, и цикл every продолжет перебирать элементы, есди будет равен, то код продолжится выполняться дальше, и этот инпут будет проверяться на правильность введенных данных
-        submitForm = el.closest('form');
-        inputsValueFromForm[el.dataset.required] = el.value;
+        submitForm = el.closest('form'); // записываем в переменную форму из которой прошел сабмит, чтоб потом отправлять данные на правильный сервер
+        inputsValueFromForm[el.dataset.required] = el.value || "default";
         // console.log(submitForm);
         const isValidInput = validate(el);
         if (!isValidInput) {
             showInputError(el);
 
         };
+
         return isValidInput;
         
     });
-    // console.log(inputsValueFromForm);
+    console.log(inputsValueFromForm);
 
     if(!isValidForm) return;
-    
     if(submitForm.name === 'loginForm'){ // если имя формы с которой отправляют данные равно 'loginForm' то выполнять запрос на login, если не т то на auth
         try{
             const result = await login(inputsValueFromForm);

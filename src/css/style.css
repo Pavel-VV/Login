@@ -43,3 +43,8 @@
   width: 500px;
   height: 463px;
 }
+
+.card-body .important:after {
+  content: " *";
+  color: red;
+}
