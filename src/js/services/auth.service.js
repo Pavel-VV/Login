@@ -27,7 +27,7 @@ import { loginServer } from './auth.server'; // импорт сервера за
 
 // //////////////////////////////////////////////////
 
-export async function login(inputs) {
+export function login(inputs) {
     const {email, password} = inputs;
     try{   
         // console.log(email, password)

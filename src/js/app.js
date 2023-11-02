@@ -12,12 +12,13 @@ import { showInputError, removeInputError } from './views/form';
 import { login } from './services/auth.service';
 import { notify } from './views/notification';
 import { getNews } from './services/news.service';
+import {reg} from './services/reg.service';
 
 const {forms,
     inputEmail,
     inputPassword,
-    inputEmailAuth,
-    inputPasswordAuth,
+    inputEmailReg,
+    inputPasswordReg,
     inputFirstName,
     inputLastName,
     inputNickname,
@@ -28,7 +29,7 @@ const {forms,
     inputCity
 } = UI;
 
-const inputs = [inputEmail, inputPassword, inputEmailAuth, inputPasswordAuth, inputFirstName, inputLastName, inputNickname, inputGender, inputDateOfBirth, inputPhone, inputCountry, inputCity];
+const inputs = [inputEmail, inputPassword, inputEmailReg, inputPasswordReg, inputFirstName, inputLastName, inputNickname, inputGender, inputDateOfBirth, inputPhone, inputCountry, inputCity];
 const allForms = [...forms];
 //events
 allForms.forEach(form => {
@@ -60,7 +61,7 @@ async function onSubmit(inputs, form) {
         return isValidInput;
         
     });
-    console.log(inputsValueFromForm);
+    // console.log(inputsValueFromForm);
 
     if(!isValidForm) return;
     if(submitForm.name === 'loginForm'){ // если имя формы с которой отправляют данные равно 'loginForm' то выполнять запрос на login, если не т то на auth
@@ -71,14 +72,22 @@ async function onSubmit(inputs, form) {
             console.log(result);
             notify({ msg: 'autorisation success', className: 'alert-success', timeout: 3000 });
         }catch(err) {
-            console.log(err)
-            notify({ msg: 'autorisation folse', className: 'alert-danger', timeout: 3000 })
+            console.log(err);
+            notify({ msg: 'autorisation false', className: 'alert-danger', timeout: 3000 });
         };
     } else {
-        console.log('form auth')
+        try{
+            const resoult = await reg(inputsValueFromForm);
+            console.log(resoult);
+
+            notify({ msg: 'registration success', className: 'alert-success', timeout: 3000 });
+        }catch(err) {
+            console.log(err);
+            notify({ msg: 'registration false', className: 'alert-danger', timeout: 3000 });
+        }
     }
     
 
     // console.log(isValidForm);
 
-}   // написать эмулирование сервера регистрации
+}   // написать эмулирование сервера регистрации (создал в auth.server функцию принятия объекта с данными)

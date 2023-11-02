@@ -14,14 +14,14 @@
 
       
       <!-- надо разместить флекс элементы друг под другом -->
-
+<!-- auth -->
       <!-- form login -->
       <div class="login-form-wrap d-flex align-items-center">
         <div class="ml-auto">
           <nav>
             <div class="nav nav-pills" id="nav-tabs">
               <button class="nav-link active" id="nav-login-tab" data-toggle="pill" data-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
-              <button class="nav-link" id="nav-auth-tab" data-toggle="pill" data-target="#nav-auth" type="button" role="tab" aria-controls="nav-auth" aria-selected="false">Auth</button>
+              <button class="nav-link" id="nav-reg-tab" data-toggle="pill" data-target="#nav-reg" type="button" role="tab" aria-controls="nav-reg" aria-selected="false">Registr</button>
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
@@ -59,18 +59,18 @@
             </div>
             
 
-            <div class="tab-pane fade" id="nav-auth" role="tabpanel" aria-labelledby="nav-auth-tab">
+            <div class="tab-pane fade" id="nav-reg" role="tabpanel" aria-labelledby="nav-reg-tab">
               <div class="form-card card">
                 <div class="card-body">
                   <h4 class="card-title">Please Registration</h4>
-                  <form name="authForm">
+                  <form name="regForm">
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label class="important" for="email2">Email address</label>
                         <input
                           type="email2"
                           class="form-control"
-                          id="emailAuth"
+                          id="emailReg"
                           aria-describedby="emailHelp"
                           placeholder="Enter email"
                           data-required="email"
@@ -78,11 +78,11 @@
                         />
                       </div>
                       <div class="form-group col-md-6">
-                        <label class="important" for="passwordAuth">Password</label>
+                        <label class="important" for="passwordReg">Password</label>
                         <input
                           type="password"
                           class="form-control"
-                          id="passwordAuth"
+                          id="passwordReg"
                           placeholder="Password"
                           data-required="password"
                         />
