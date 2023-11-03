@@ -43,14 +43,17 @@ export function regServer(userData) {
             resoultValidationUserKey = true;
         });
         if(resoultValidationUserKey) {
-            const resoult = addNewUser.some(user => { //перебираю всех сохраненных пользователей на сервере сохраненные в json формате с новым пользователем, предварительно переведя его в json формат
-                return user === JSON.stringify(userData);
+            const resoultNewUser = addNewUser.some(user => { //перебираю всех сохраненных пользователей на сервере сохраненные в json формате с новым пользователем, предварительно переведя его в json формат
+                console.log(addNewUser, user)
+                return JSON.stringify(user) === JSON.stringify(userData);
+                
+                
             });
-
-            if(resoult) return // если нашлось совпадение среди сохраненных пользователей, прекращаем дальнейший код, если совпадений небыло, то переводим нового пользователя в json и добавляем в массив пользователей
-
-            addNewUser.push(JSON.stringify(userData)); // записываю объекты в json формате в массив для того чтоб можно было сравнивать, не добавился ли точно такой же пользователь
-            // console.log(addNewUser)
+            console.log(resoultNewUser)
+            if(resoultNewUser) return // если нашлось совпадение среди сохраненных пользователей, прекращаем дальнейший код, если совпадений небыло, то переводим нового пользователя в json и добавляем в массив пользователей
+            
+            addNewUser.push(JSON.parse(JSON.stringify(userData))); // записываю объекты в json формате в массив для того чтоб можно было сравнивать, не добавился ли точно такой же пользователь
+            console.log(addNewUser)
             resolve({
                 error: false,
                 auth: true,
