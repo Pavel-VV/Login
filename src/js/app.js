@@ -14,8 +14,6 @@ import { notify } from './views/notification';
 import { getNews } from './services/news.service';
 import {reg} from './services/reg.service';
 
-import { getCountries } from './services/countries.service';
-
 const {forms,
     inputEmail,
     inputPassword,
@@ -95,4 +93,5 @@ async function onSubmit(inputs, form) {
 }
 // сохранить полученный токен и использовать его в дальнейшем
 // autocomplite стран и городов
-getCountries()
+
+//сделать serialize стран и городов, в городах на места отсутствия русских имен, записать латинские
