@@ -1,7 +1,7 @@
 const lsTokenKey = 'my_app_token';
 
 function setTokenOnLogin(res) {
-    const isLoginUrl = res.config.url.includes('login');
+    const isLoginUrl = res.config.url.includes('auth');
     if(isLoginUrl) {
         const token = res.data.token;
         localStorage.setItem(lsTokenKey, token);
