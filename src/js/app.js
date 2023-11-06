@@ -13,7 +13,8 @@ import { login } from './services/auth.service';
 import { notify } from './views/notification';
 import { getNews } from './services/news.service';
 import {reg} from './services/reg.service';
-
+import { init } from './store/locations';
+init();
 const {forms,
     inputEmail,
     inputPassword,
@@ -93,5 +94,5 @@ async function onSubmit(inputs, form) {
 }
 // сохранить полученный токен и использовать его в дальнейшем
 // autocomplite стран и городов
-
-//сделать serialize стран и городов, в городах на места отсутствия русских имен, записать латинские
+// сделать disable input citi
+//сделать в location serialize стран и городов, в городах на места отсутствия русских имен, записать латинские
