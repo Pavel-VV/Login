@@ -4,6 +4,7 @@ import { getCities } from '../services/cities.service';
 const dataLocations = {
     countries: null,
     cities: null,
+    countriesNamesList: null,
 };
 
 export async function init() {
@@ -20,6 +21,11 @@ function serializeCountries(countries) {
         acc[country.name || country.name_translations.en] = country;
         return acc;
     }, {})
+}
+
+export function getCountriesNames() {
+    dataLocations.countriesList = Object.keys(dataLocations.countries);
+    console.log(dataLocations.countriesNamesList);
 }
 
 

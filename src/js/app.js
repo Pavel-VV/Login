@@ -14,7 +14,10 @@ import { notify } from './views/notification';
 import { getNews } from './services/news.service';
 import {reg} from './services/reg.service';
 import { init } from './store/locations';
-init();
+import { getCountriesNames } from './store/locations';
+
+initLocations();
+
 const {forms,
     inputEmail,
     inputPassword,
@@ -97,7 +100,11 @@ async function onSubmit(inputs, form) {
     // console.log(isValidForm);
 
 }
+
+async function initLocations() {
+    await init();
+    getCountriesNames();
+}
 // сохранить полученный токен и использовать его в дальнейшем
 // autocomplite стран и городов
-// сделать disable input citi
 //сделать в location serialize стран и городов, в городах на места отсутствия русских имен, записать латинские
