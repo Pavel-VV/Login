@@ -40,6 +40,11 @@ allForms.forEach(form => {
     });
 })
 
+inputCountry.addEventListener('keyup', () => { //разблокируе inputCity если в поле со странами начали что то вводить
+    if(inputCountry.value) {
+        inputCity.disabled = false
+    } else inputCity.disabled = true;
+});
 
 inputs.forEach(el => el.addEventListener('focus', () => removeInputError(el)));
 
