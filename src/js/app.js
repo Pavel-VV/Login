@@ -14,7 +14,7 @@ import { notify } from './views/notification';
 import { getNews } from './services/news.service';
 import {reg} from './services/reg.service';
 import { init } from './store/locations';
-import { getCountriesNames } from './store/locations';
+import { getCountriesNames, getCountryCodeByName, getCitiesNameByCountryName } from './store/locations';
 
 initLocations();
 
@@ -104,6 +104,8 @@ async function onSubmit(inputs, form) {
 async function initLocations() {
     await init();
     getCountriesNames();
+    getCountryCodeByName('Россия');
+    getCitiesNameByCountryName('Россия');
 }
 // сохранить полученный токен и использовать его в дальнейшем
 // autocomplite стран и городов
