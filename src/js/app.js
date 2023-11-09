@@ -14,7 +14,8 @@ import { notify } from './views/notification';
 import { getNews } from './services/news.service';
 import {reg} from './services/reg.service';
 import { init } from './store/locations';
-import { getCountriesNames, getCountryCodeByName, getCitiesNameByCountryName } from './store/locations';
+import { getCountriesNames, getCitiesNameByCountryName } from './store/locations';
+import dataLocations from './store/locations'
 
 initLocations();
 
@@ -43,10 +44,16 @@ allForms.forEach(form => {
     });
 })
 
-inputCountry.addEventListener('keyup', () => { //разблокируе inputCity если в поле со странами начали что то вводить
-    if(inputCountry.value) {
+inputCountry.addEventListener('keyup', () => {
+    const validInput = dataLocations.countriesNamesList.some(country => {
+        return inputCountry.value === country; //проверяю введенная страна совпадает со странами из списка стран, то вернуть true
+    });
+    if(validInput) { // если true то разблокировать input городов
         inputCity.disabled = false
-    } else inputCity.disabled = true;
+    } else {
+        inputCity.value ='';
+        inputCity.disabled = true;
+    }
 });
 
 inputs.forEach(el => el.addEventListener('focus', () => removeInputError(el)));
@@ -103,10 +110,8 @@ async function onSubmit(inputs, form) {
 
 async function initLocations() {
     await init();
-    getCountriesNames();
-    getCountryCodeByName('Россия');
-    getCitiesNameByCountryName('Россия');
+    getCountriesNames(); // список стран, для проверки
+    getCitiesNameByCountryName('Россия'); // список городов по имени страны, для проверки
 }
 // сохранить полученный токен и использовать его в дальнейшем
 // autocomplite стран и городов
-//сделать в location serialize стран и городов, в городах на места отсутствия русских имен, записать латинские

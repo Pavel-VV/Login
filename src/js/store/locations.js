@@ -14,7 +14,7 @@ export async function init() {
     // [dataLocation.countries, dataLocation.cities] = response;
     dataLocations.countries = serializeCountries(countries);
     dataLocations.cities = cities;
-    console.log(dataLocations.countries, cities);
+    // console.log(dataLocations.countries, cities);
 };
 
 function serializeCountries(countries) {
@@ -26,12 +26,7 @@ function serializeCountries(countries) {
 
 export function getCountriesNames() {
     dataLocations.countriesNamesList = Object.keys(dataLocations.countries);
-    console.log(dataLocations.countriesNamesList);
-}
-
-export function getCountryCodeByName(countryName) { // вставить имя страны из инпута Country
-    const countryCode = dataLocations.countries[countryName].code;
-    console.log(countryCode);
+    // console.log(dataLocations.countriesNamesList);
 }
 
 export function getCitiesNameByCountryName(countryName) {
@@ -43,9 +38,7 @@ export function getCitiesNameByCountryName(countryName) {
     citiesByCountryCode.forEach(city => { // перебираем массив отфильтрованных городов
         dataLocations.citiesNameList.push(city.name || city.name_translations.en); // создаем массив имен городов
     });
-    console.log(dataLocations.citiesNameList);
+    // console.log(dataLocations.citiesNameList);
 }
 
-
-
-// сделать serializeCities где ключем будет 
+export default dataLocations;
