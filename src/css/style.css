@@ -48,3 +48,30 @@
   content: " *";
   color: red;
 }
+
+/* autocomplete */
+
+.autocomplete-list {
+  list-style: none;
+  padding: unset;
+  margin: unset;
+}
+
+.autocomplete-list li:hover {
+  background: #e9f0f8;
+}
+
+.autocomplete-list li {
+  border: 1px solid #ced4da;
+  border-top: unset;
+}
+
+.autocomplete-list button {
+  color: #495057;
+  border: unset;
+  background: unset;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.375rem 0.75rem;
+}
