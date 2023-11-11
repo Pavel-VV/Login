@@ -15,7 +15,8 @@ import { getNews } from './services/news.service';
 import {reg} from './services/reg.service';
 import { init } from './store/locations';
 import { getCountriesNames, getCitiesNameByCountryName } from './store/locations';
-import dataLocations from './store/locations'
+import dataLocations from './store/locations';
+import { autocomplete } from './views/autocomplete';
 
 initLocations();
 
@@ -112,6 +113,7 @@ async function initLocations() {
     await init();
     getCountriesNames(); // список стран, для проверки
     getCitiesNameByCountryName('Россия'); // список городов по имени страны, для проверки
+    autocomplete();
 }
 // сохранить полученный токен и использовать его в дальнейшем
 // autocomplite стран и городов
