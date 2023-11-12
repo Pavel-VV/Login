@@ -37,6 +37,7 @@ const {forms,
 
 const inputs = [inputEmail, inputPassword, inputEmailReg, inputPasswordReg, inputFirstName, inputLastName, inputNickname, inputGender, inputDateOfBirth, inputPhone, inputCountry, inputCity];
 const allForms = [...forms];
+
 //events
 allForms.forEach(form => {
     form.addEventListener('submit', e => {
@@ -45,7 +46,7 @@ allForms.forEach(form => {
     });
 })
 
-inputCountry.addEventListener('keyup', () => {
+inputCountry.addEventListener('input', () => { // разблокировка инпута для ввода городов
     const validInput = dataLocations.countriesNamesList.some(country => {
         return inputCountry.value === country; //проверяю введенная страна совпадает со странами из списка стран, то вернуть true
     });
@@ -116,4 +117,4 @@ async function initLocations() {
     autocomplete();
 }
 // сохранить полученный токен и использовать его в дальнейшем
-// autocomplite стран и городов
+// autocomplite городов
