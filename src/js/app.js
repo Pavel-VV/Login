@@ -117,4 +117,3 @@ async function initLocations() {
     autocomplete();
 }
 // сохранить полученный токен и использовать его в дальнейшем
-// autocomplite городов
