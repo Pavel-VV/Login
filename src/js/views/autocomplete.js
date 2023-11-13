@@ -7,12 +7,12 @@ export function autocomplete() {
     const countries = dataLocations.countriesNamesList;
     const cities = dataLocations.citiesNamesList;
 
-    inputCountries.addEventListener('input', onInputChange(countries, inputCountries, true)); // добавляем список после найденого инпута (если передаю true, разблокируется input City)
+    inputCountries.addEventListener('input', onInputChange(countries, inputCountries, inputCities)); // добавляем список после найденого инпута (если передаю третий аргумент, в виде инпута, то разблокируется переданный input)
     inputCities.addEventListener('input', onInputChange(cities, inputCities));
 };
 
 function onInputChange(list, inputEl, unblockInput = false) { // фукция генерации элементов autocomplete
-    return e => { // нужна функция высшего порядка, чтоб ы можно было в обработчик события передать данные кроме event
+    return (e) => { // нужна функция высшего порядка, чтоб ы можно было в обработчик события передать данные кроме event
         onInputRemove(); // при вводе каждого нового символа, удалять ранее созданный список
         
         const ulList = document.createElement('ul'); // создаем список
@@ -48,8 +48,7 @@ function pressOnButtonAutocomplete(input, unblockInput) {
         button.addEventListener('click', e => {
             e.preventDefault();
             input.value = button.textContent;
-            const inputCity = document.querySelector('#city');
-            if(unblockInput) inputCity.disabled = false;
+            if(unblockInput) unblockInput.disabled = false; // получаю в переменной unblockInput input который нужно разблокировать
             onInputRemove();
         })
     })
