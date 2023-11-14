@@ -1,26 +1,34 @@
-import dataLocations from '../store/locations';
+import {getCitiesNamesByCountryName} from '../store/locations';
 
-const inputCountries = document.querySelector('[data-autocomplete-countries]'); // находим инпут после которого будет создаваться autocomplete
-const inputCities = document.querySelector('[data-autocomplete-cities]');
+// const inputCountries = document.querySelector('[data-autocomplete-countries]'); // находим инпут после которого будет создаваться autocomplete
+// const inputCities = document.querySelector('[data-autocomplete-cities]');
 
-export function autocomplete() {
-    const countries = dataLocations.countriesNamesList;
-    const cities = dataLocations.citiesNamesList;
+// export function autocomplete(dataLocationsq) {
+    
+//     const countries = dataLocationsq.getCountriesNamesList.bind(dataLocationsq);
+//     const cities = dataLocationsq.getCitiesNamesList.bind(dataLocationsq);
+//     // console.log(countries())
 
-    inputCountries.addEventListener('input', onInputChange(countries, inputCountries, inputCities)); // добавляем список после найденого инпута (если передаю третий аргумент, в виде инпута, то разблокируется переданный input)
-    inputCities.addEventListener('input', onInputChange(cities, inputCities));
-};
+//     inputCountries.addEventListener('input', onInputChange(countries(), inputCountries, inputCities)); // добавляем список после найденого инпута (если передаю третий аргумент, в виде инпута, то разблокируется переданный input)
+//     inputCities.addEventListener('input', onInputChange(cities(), inputCities));
+// };
 
-function onInputChange(list, inputEl, unblockInput = false) { // фукция генерации элементов autocomplete
+/**
+ * 
+ * @param {Array} list 
+ * @param {HTMLElement} inputEl 
+ * @param {HTMLElement} unblockInput 
+ * @returns
+ */
+export function onInputChange(getList, inputEl, unblockInput = false) { // фукция генерации элементов autocomplete
     return (e) => { // нужна функция высшего порядка, чтоб ы можно было в обработчик события передать данные кроме event
         onInputRemove(); // при вводе каждого нового символа, удалять ранее созданный список
-        
+        const list = getList();
         const ulList = document.createElement('ul'); // создаем список
         ulList.className = 'autocomplete-list';
         inputEl.insertAdjacentElement('afterend', ulList);
 
         const inputValue = (inputEl.value).toLowerCase();
-        // console.log(inputValue);
         if(inputValue.length === 0) return;
         list.forEach((elem) => {
             if (elem.substring(0, inputValue.length).toLowerCase() === inputValue) {
@@ -48,7 +56,11 @@ function pressOnButtonAutocomplete(input, unblockInput) {
         button.addEventListener('click', e => {
             e.preventDefault();
             input.value = button.textContent;
-            if(unblockInput) unblockInput.disabled = false; // получаю в переменной unblockInput input который нужно разблокировать
+            
+            if(unblockInput) {
+                unblockInput.disabled = false; // получаю в переменной unblockInput input который нужно разблокировать
+                getCitiesNamesByCountryName(button.textContent); // вызов функции формирования массива городов, при нажатии кнопки
+            }
             onInputRemove();
         })
     })

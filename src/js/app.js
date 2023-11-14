@@ -14,9 +14,10 @@ import { notify } from './views/notification';
 import { getNews } from './services/news.service';
 import {reg} from './services/reg.service';
 import { init } from './store/locations';
-import { getCountriesNames, getCitiesNameByCountryName } from './store/locations';
+import { getCountriesNames, getCitiesNamesByCountryName } from './store/locations';
 import dataLocations from './store/locations';
 import { autocomplete } from './views/autocomplete';
+import { onInputChange } from './views/autocomplete';
 
 initLocations();
 
@@ -38,6 +39,7 @@ const {forms,
 const inputs = [inputEmail, inputPassword, inputEmailReg, inputPasswordReg, inputFirstName, inputLastName, inputNickname, inputGender, inputDateOfBirth, inputPhone, inputCountry, inputCity];
 const allForms = [...forms];
 
+
 //events
 allForms.forEach(form => {
     form.addEventListener('submit', e => {
@@ -47,16 +49,24 @@ allForms.forEach(form => {
 })
 
 inputCountry.addEventListener('input', () => { // разблокировка инпута для ввода городов
+    // console.log(dataLocations.countriesNamesList)
     const validInput = dataLocations.countriesNamesList.some(country => {
         return inputCountry.value === country; //проверяю введенная страна совпадает со странами из списка стран, то вернуть true
     });
     if(validInput) { // если true то разблокировать input городов
-        inputCity.disabled = false
+        inputCity.disabled = false;
+        getCitiesNamesByCountryName(inputCountry.value);
+
     } else {
         inputCity.value ='';
         inputCity.disabled = true;
     }
 });
+
+inputCountry.addEventListener('input', onInputChange(dataLocations.getCountriesNamesList.bind(dataLocations), inputCountry, inputCity)) // dataLocations.getCountriesNamesList.bind(dataLocations) привязываю через bind так как будет потеря контекста this
+inputCity.addEventListener('input', onInputChange(dataLocations.getCitiesNamesList.bind(dataLocations), inputCity))
+
+
 
 inputs.forEach(el => el.addEventListener('focus', () => removeInputError(el)));
 
@@ -113,8 +123,8 @@ async function onSubmit(inputs, form) {
 async function initLocations() {
     await init();
     getCountriesNames(); // список стран, для проверки
-    getCitiesNameByCountryName('Россия'); // список городов по имени страны, для проверки
-    autocomplete();
+    // getCitiesNameByCountryName('Россия'); // список городов по имени страны, для проверки
+    // autocomplete(dataLocations);
 }
 // сохранить полученный токен и использовать его в дальнейшем
 // доработать autocomplete, чтоб появлялся в окне со скролингом

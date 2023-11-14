@@ -6,6 +6,12 @@ const dataLocations = {
     cities: null, // array object(city)
     countriesNamesList: null, // массив имен стран для автокомплита инпута Country
     citiesNamesList: [], // массив имен городов по коду страны для автокомплита инпута City
+    getCountriesNamesList() {
+        return this.countriesNamesList;
+    },
+    getCitiesNamesList() {
+        return this.citiesNamesList
+    },
 };
 
 export async function init() {
@@ -29,7 +35,7 @@ export function getCountriesNames() {
     // console.log(dataLocations.countriesNamesList);
 }
 
-export function getCitiesNameByCountryName(countryName) {
+export function getCitiesNamesByCountryName(countryName) {
     const countryCode = dataLocations.countries[countryName].code; // находим код страны по имени страны
     const citiesByCountryCode = dataLocations.cities.filter(elem => { // находим все города по коду страны
         return elem.country_code === countryCode;
