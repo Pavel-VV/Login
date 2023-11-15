@@ -24,9 +24,12 @@ export function onInputChange(getList, inputEl, unblockInput = false) { // фу�
     return (e) => { // нужна функция высшего порядка, чтоб ы можно было в обработчик события передать данные кроме event
         onInputRemove(); // при вводе каждого нового символа, удалять ранее созданный список
         const list = getList();
+        const divList = document.createElement('div'); // убрал все в div блок, чтобы реализовать скролинг автокомплита
+        divList.className = 'autocomplete-block';
         const ulList = document.createElement('ul'); // создаем список
         ulList.className = 'autocomplete-list';
-        inputEl.insertAdjacentElement('afterend', ulList);
+        divList.appendChild(ulList);
+        inputEl.insertAdjacentElement('afterend', divList);
 
         const inputValue = (inputEl.value).toLowerCase();
         if(inputValue.length === 0) return;
@@ -44,10 +47,13 @@ export function onInputChange(getList, inputEl, unblockInput = false) { // фу�
 };
 
 function onInputRemove() {
-    const ulList = document.querySelector('.autocomplete-list');
-    if(!ulList) return;
+    const divList = document.querySelector('.autocomplete-block');
+    if(!divList) return;
+    divList.remove();
+    // const ulList = document.querySelector('.autocomplete-list');
+    // if(!ulList) return;
     
-    ulList.remove();
+    // ulList.remove();
 };
 
 function pressOnButtonAutocomplete(input, unblockInput) {
