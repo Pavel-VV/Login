@@ -22,10 +22,12 @@ import {getCitiesNamesByCountryName} from '../store/locations';
  */
 export function onInputChange(getList, inputEl, unblockInput = false) { // фукция генерации элементов autocomplete
     return (e) => { // нужна функция высшего порядка, чтоб ы можно было в обработчик события передать данные кроме event
+        // console.log(e.target.offsetWidth);
         onInputRemove(); // при вводе каждого нового символа, удалять ранее созданный список
         const list = getList();
         const divList = document.createElement('div'); // убрал все в div блок, чтобы реализовать скролинг автокомплита
         divList.className = 'autocomplete-block';
+        divList.style.width = `${e.target.offsetWidth}px`; // выставлять размер выпадающего списка в размер инпута на который нажали
         const ulList = document.createElement('ul'); // создаем список
         ulList.className = 'autocomplete-list';
         divList.appendChild(ulList);

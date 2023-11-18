@@ -57,7 +57,7 @@
   margin: unset;
 }
 
-.autocomplete-list li:hover {
+.autocomplete-list li button:hover {
   background: #e9f0f8;
 }
 
@@ -69,7 +69,7 @@
 .autocomplete-list button {
   color: #495057;
   border: unset;
-  background: unset;
+  background: white;
   display: block;
   width: 100%;
   text-align: left;
@@ -77,6 +77,10 @@
 }
 
 .autocomplete-block {
+  display: block;
+  position: fixed;
+  /* width: 224px; */
+
   max-height: 150px;
   overflow-y: scroll;
 }
